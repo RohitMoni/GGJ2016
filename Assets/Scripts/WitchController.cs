@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class WitchController : MonoBehaviour {
 
-    const float mass = 1;
-    const float drag = 1;
+    public readonly float mass = 1;
+    public readonly float drag = 1;
 
     Vector2 position = new Vector2(0, 0);
     Vector2 velocity = new Vector2(0, 0);
