@@ -13,6 +13,7 @@ public class WitchController : EntityControllers
     public KeyCode leftKey = KeyCode.A;
 
     private bool overPentagram = false;
+    private bool overChild = false;
 
     protected override Vector2 UpdateForce()
     {
@@ -37,7 +38,11 @@ public class WitchController : EntityControllers
 
     public void OverPentagram(bool enabled)
     {
-        Debug.Log(enabled);
         overPentagram = enabled;
+    }
+
+    public void OverChild(bool enabled)
+    {
+        overChild = enabled;
     }
 }
