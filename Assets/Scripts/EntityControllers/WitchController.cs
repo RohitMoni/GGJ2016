@@ -3,7 +3,6 @@ using System.Collections;
 
 using UnityEngine;
 
-
 public class WitchController : EntityControllers
 {
 
@@ -15,7 +14,7 @@ public class WitchController : EntityControllers
     private bool overPentagram = false;
     private bool overChild = false;
 
-    protected override Vector2 UpdateForce()
+    protected override Vector2 ComputeAdditionalForces()
     {
         var x = Input.GetKey(rightKey) ? 1 : 0;
         x -= Input.GetKey(leftKey) ? 1 : 0;

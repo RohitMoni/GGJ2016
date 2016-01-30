@@ -15,14 +15,14 @@ public class ChildController : EntityControllers
 
     void Start()
     {
-        waypoint = getNewWaypoint();
+        waypoint = GetNewWaypoint();
     }
 
-    protected override Vector2 UpdateForce()
+    protected override Vector2 ComputeAdditionalForces()
     {
-        if((waypoint - position).magnitude < waypointRadius)
+        if ((waypoint - position).magnitude < waypointRadius)
         {
-            waypoint = getNewWaypoint();
+            waypoint = GetNewWaypoint();
         }
 
         var force = waypoint - position;
@@ -34,7 +34,7 @@ public class ChildController : EntityControllers
         return force;
     }
 
-    Vector2 getNewWaypoint()
+    Vector2 GetNewWaypoint()
     {
         var x = xMin + (xMax - xMin) * UnityEngine.Random.value;
         var y = yMin + (yMax - yMin) * UnityEngine.Random.value;
