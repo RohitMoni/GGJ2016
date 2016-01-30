@@ -11,12 +11,17 @@ public class WitchController : EntityControllers
     public KeyCode rightKey = KeyCode.D;
     public KeyCode downKey = KeyCode.S;
     public KeyCode leftKey = KeyCode.A;
+    public KeyCode pickupKey = KeyCode.M;
 
     public Texture2D upRightSprite;
     public Texture2D downRightSprite;
 
     private bool overPentagram = false;
     private bool overChild = false;
+
+    private GameObject heldChild;
+    private GameObject grabableChild;
+    private bool holdingChild = false;
 
     protected override Vector2 ComputeAdditionalForces()
     {
@@ -37,6 +42,20 @@ public class WitchController : EntityControllers
 
     protected override void UpdateLogic()
     {
+        if (Input.GetKeyDown(pickupKey))
+        {
+            if (holdingChild == true) //Drop child
+            {
+                heldChild.transform.parent = null;
+                holdingChild = false;
+            }
+            else if(overChild == true) //Grab child
+            {
+                heldChild = grabableChild;
+                heldChild.transform.parent = gameObject.transform;
+                holdingChild = true;
+            }
+        }
     }
 
     public void OverPentagram(bool enabled)
@@ -44,8 +63,9 @@ public class WitchController : EntityControllers
         overPentagram = enabled;
     }
 
-    public void OverChild(bool enabled)
+    public void OverChild(bool enabled, GameObject child)
     {
         overChild = enabled;
+        grabableChild = child;
     }
 }

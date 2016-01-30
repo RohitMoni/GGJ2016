@@ -3,9 +3,11 @@ using System.Collections;
 
 public class ChildPickupScript : MonoBehaviour {
 
+    WitchController witchController;
+
 	// Use this for initialization
 	void Start () {
-	
+        witchController = GameObject.Find("Witch").GetComponent<WitchController>();
 	}
 	
 	// Update is called once per frame
@@ -17,7 +19,7 @@ public class ChildPickupScript : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            col.gameObject.SendMessage("OverChild", true);
+            witchController.OverChild(true, col.gameObject);
         }
     }
 
@@ -25,7 +27,7 @@ public class ChildPickupScript : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            col.gameObject.SendMessage("OverChild", false);
+            witchController.OverChild(false, col.gameObject);
         }
     }
 }
