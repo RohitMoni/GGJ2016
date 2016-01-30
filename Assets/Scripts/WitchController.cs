@@ -32,7 +32,7 @@ public class WitchController : MonoBehaviour {
             Debug.Log(forceApplied);
         }
 
-        var acceleration = forceApplied - drag * velocity;
+        var acceleration = (forceApplied - drag * velocity)/mass;
 
         velocity += Time.deltaTime * acceleration;
 
