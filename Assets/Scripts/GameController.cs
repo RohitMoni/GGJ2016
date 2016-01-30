@@ -10,6 +10,10 @@ public class GameController : MonoBehaviour
 
     public void QuitGameButton()
     {
+        if (UnityEditor.EditorApplication.isPlaying)
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
         Application.Quit();
     }
 }
