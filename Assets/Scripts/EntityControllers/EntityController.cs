@@ -27,14 +27,11 @@ public abstract class EntityControllers : MonoBehaviour
 
         velocity += Time.deltaTime * acceleration;
 
-<<<<<<< HEAD
         transform.position += (Vector3)(Time.deltaTime * velocity);
 
         UpdateLogic();
-=======
         position += Time.deltaTime * velocity;
         //transform.position += (Vector3)(Time.deltaTime * velocity);
->>>>>>> origin/master
     }
 
     abstract protected Vector2 UpdateForce();
