@@ -12,6 +12,8 @@ public class WitchController : EntityControllers
     public KeyCode downKey = KeyCode.S;
     public KeyCode leftKey = KeyCode.A;
 
+    private bool overPentagram = false;
+
     protected override Vector2 UpdateForce()
     {
         var x = Input.GetKey(rightKey) ? 1 : 0;
@@ -27,5 +29,15 @@ public class WitchController : EntityControllers
             force = force.normalized;
         }
         return force;
+    }
+
+    protected override void UpdateLogic()
+    {
+    }
+
+    public void OverPentagram(bool enabled)
+    {
+        Debug.Log(enabled);
+        overPentagram = enabled;
     }
 }

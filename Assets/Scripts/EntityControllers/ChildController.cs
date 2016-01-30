@@ -18,4 +18,9 @@ public class ChildController : EntityControllers {
 
         throw new NotImplementedException();
     }
+
+    protected override void UpdateLogic()
+    {
+        
+    }
 }

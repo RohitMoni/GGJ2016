@@ -15,7 +15,6 @@ public class PentagramController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Pentagram collision detected");
         if (col.gameObject.tag == "Player")
         {
             col.gameObject.SendMessage("OverPentagram", true);
@@ -24,7 +23,6 @@ public class PentagramController : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D col)
     {
-        Debug.Log("Pentagram collision left");
         if (col.gameObject.tag == "Player")
         {
             col.gameObject.SendMessage("OverPentagram", false);
