@@ -70,8 +70,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_IsKinematic: 1
+  m_GravityScale: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -101,8 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05ffaccb5cb42048bad3445a7772633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 0.02
-  drag: 0.2
   upKey: 119
   rightKey: 100
   downKey: 115
@@ -162,6 +160,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
