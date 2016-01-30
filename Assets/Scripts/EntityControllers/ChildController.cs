@@ -16,6 +16,7 @@ public class ChildController : EntityControllers
     void Start()
     {
         waypoint = GetNewWaypoint();
+        base.Start();
     }
 
     protected override Vector2 ComputeAdditionalForces()

@@ -13,7 +13,7 @@ public abstract class EntityControllers : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start()
+    protected void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
     }
@@ -25,6 +25,6 @@ public abstract class EntityControllers : MonoBehaviour
         UpdateLogic();
     }
 
-    abstract protected Vector2 ComputeAdditionalForces();
+    protected abstract Vector2 ComputeAdditionalForces();
     protected abstract void UpdateLogic();
 }

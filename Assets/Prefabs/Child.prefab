@@ -24,7 +24,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 482302}
-  - 114: {fileID: 11430438}
+  - 50: {fileID: 5053284}
+  - 114: {fileID: 11440644}
   m_Layer: 0
   m_Name: Child
   m_TagString: Untagged
@@ -87,6 +88,23 @@ Transform:
   - {fileID: 402966}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5053284
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169038}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6115138
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -101,7 +119,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 3, y: 3}
---- !u!114 &11430438
+--- !u!114 &11440644
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -112,8 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bbeae40524087d44abbfa1179ce8a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 1
-  drag: 1
 --- !u!114 &11461874
 MonoBehaviour:
   m_ObjectHideFlags: 1
