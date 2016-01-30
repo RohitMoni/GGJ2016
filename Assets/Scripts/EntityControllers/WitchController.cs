@@ -46,13 +46,20 @@ public class WitchController : EntityControllers
         {
             if (holdingChild == true) //Drop child
             {
+                print("Dropping Child");
                 heldChild.transform.parent = null;
+                heldChild.GetComponent<ChildController>().enabled = true;
+                heldChild.GetComponent<Rigidbody2D>().isKinematic = false;
                 holdingChild = false;
             }
-            else if(overChild == true) //Grab child
+            else if(overChild == true && holdingChild == false) //Grab child
             {
+                print("Grabbing Child: " + grabableChild.name);
                 heldChild = grabableChild;
                 heldChild.transform.parent = gameObject.transform;
+                heldChild.GetComponent<ChildController>().enabled = false;
+                heldChild.GetComponent<Rigidbody2D>().isKinematic = true;
+                heldChild.transform.localPosition = new Vector3(0, -0.5f, 0);
                 holdingChild = true;
             }
         }
@@ -66,6 +73,7 @@ public class WitchController : EntityControllers
     public void OverChild(bool enabled, GameObject child)
     {
         overChild = enabled;
+        Debug.Log("Over child: " + child.name);
         grabableChild = child;
     }
 }

@@ -19,7 +19,7 @@ public class ChildPickupScript : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            witchController.OverChild(true, col.gameObject);
+            witchController.OverChild(true, transform.parent.gameObject);
         }
     }
 
@@ -27,7 +27,7 @@ public class ChildPickupScript : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            witchController.OverChild(false, col.gameObject);
+            witchController.OverChild(false, transform.parent.gameObject);
         }
     }
 }
