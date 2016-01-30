@@ -7,7 +7,7 @@ public abstract class EntityControllers : MonoBehaviour
     public float mass = 1;
     public float drag = 1;
 
-    Vector2 position
+    protected Vector2 position
     {
         get { return (Vector2)transform.position; }
         set { transform.position = (Vector2)value;  }
@@ -27,7 +27,8 @@ public abstract class EntityControllers : MonoBehaviour
 
         velocity += Time.deltaTime * acceleration;
 
-        transform.position += (Vector3)(Time.deltaTime * velocity);
+        position += Time.deltaTime * velocity;
+        //transform.position += (Vector3)(Time.deltaTime * velocity);
     }
 
     abstract protected Vector2 UpdateForce();
