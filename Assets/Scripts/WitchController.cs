@@ -19,13 +19,12 @@ public class WitchController : MonoBehaviour {
     public KeyCode downKey = KeyCode.S;
     public KeyCode leftKey = KeyCode.A;
 
-	// Use this for initialization
-	void Start () {
-        Debug.Log("Hello start!");
-	}
+    // Use this for initialization
+    void Start() { }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 
         if (KeyboardInputChanged())
         {
@@ -66,17 +65,5 @@ public class WitchController : MonoBehaviour {
         y -= Input.GetKey(downKey) ? 1 : 0;
 
         return new Vector2(x, y);
-    }
-
-    void OnGUI()
-    {
-        //if (Event.current.Equals(Event.KeyboardEvent("w")))
-        //{
-        //    Debug.Log("Hello GUI!");
-        //}
-    }
-
-    void onKeyPressed() {
-
     }
 }
