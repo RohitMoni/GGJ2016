@@ -3,6 +3,7 @@ using System.Collections;
 
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class WitchController : EntityControllers
 {
 
@@ -10,6 +11,9 @@ public class WitchController : EntityControllers
     public KeyCode rightKey = KeyCode.D;
     public KeyCode downKey = KeyCode.S;
     public KeyCode leftKey = KeyCode.A;
+
+    public Texture2D upRightSprite;
+    public Texture2D downRightSprite;
 
     private bool overPentagram = false;
     private bool overChild = false;
