@@ -34,7 +34,6 @@ public class ChildWaypointNodeScript : MonoBehaviour
         connectedNodes.Add(nodeToAdd);
     }
 
-#if UNITY_EDITOR
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -43,7 +42,4 @@ public class ChildWaypointNodeScript : MonoBehaviour
             Gizmos.DrawLine(transform.position, node.transform.position);
         }
     } 
-
-#endif  
-
 }
