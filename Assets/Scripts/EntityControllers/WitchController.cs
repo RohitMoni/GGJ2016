@@ -23,6 +23,8 @@ public class WitchController : EntityControllers
     private GameObject grabableChild;
     private bool holdingChild = false;
 
+    private GameObject pentagramObject;
+
     protected override Vector2 ComputeAdditionalForces()
     {
         var x = Input.GetKey(rightKey) ? 1 : 0;
@@ -46,11 +48,19 @@ public class WitchController : EntityControllers
         {
             if (holdingChild == true) //Drop child
             {
-                print("Dropping Child");
-                heldChild.transform.parent = null;
-                heldChild.GetComponent<ChildController>().enabled = true;
-                heldChild.GetComponent<Rigidbody2D>().isKinematic = false;
-                holdingChild = false;
+                if (overPentagram)
+                {
+                    pentagramObject.GetComponent<PentagramController>().KidDroppedFunction();
+                    Destroy(heldChild);
+                }
+                else
+                {
+                    print("Dropping Child");
+                    heldChild.transform.parent = null;
+                    heldChild.GetComponent<ChildController>().enabled = true;
+                    heldChild.GetComponent<Rigidbody2D>().isKinematic = false;
+                    holdingChild = false;
+                }
             }
             else if(overChild == true && holdingChild == false) //Grab child
             {
@@ -65,15 +75,15 @@ public class WitchController : EntityControllers
         }
     }
 
-    public void OverPentagram(bool enabled)
+    public void OverPentagram(bool enabled, GameObject pentagram)
     {
         overPentagram = enabled;
+        pentagramObject = pentagram;
     }
 
     public void OverChild(bool enabled, GameObject child)
     {
         overChild = enabled;
-        Debug.Log("Over child: " + child.name);
         grabableChild = child;
     }
 }
