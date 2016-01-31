@@ -18,9 +18,9 @@ public class ChildController : EntityControllers
 
     void Start()
     {
+        base.Start();
         waypointAnchor = GameObject.Find("WaypointAnchor").transform;
         GetNewWaypoint();
-        base.Start();
     }
 
     protected override Vector2 ComputeAdditionalForces()
@@ -48,7 +48,7 @@ public class ChildController : EntityControllers
         }
         else
         {
-            int randomNode = UnityEngine.Random.Range(0, waypointAnchor.childCount-1);
+            int randomNode = UnityEngine.Random.Range(0, waypointAnchor.childCount);
             waypointNode = waypointAnchor.GetChild(randomNode).transform;
         }
 

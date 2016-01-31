@@ -65,41 +65,35 @@ public class WitchController : EntityControllers
 
         if (angle < (1f / 2) * rotPerSprite)
         {
-            Debug.Log("up");
             sprite = upSprite;
         }
         else if (angle < (3f / 2) * rotPerSprite)
         {
-            Debug.Log("upright");
             sprite = upRightSprite;
         }
         else if(angle < (5f / 2) * rotPerSprite)
         {
-            Debug.Log("right");
             sprite = rightSprite;
         }
         else if(angle < (7f / 2) * rotPerSprite)
         {
-            Debug.Log("downright");
             sprite = downRightSprite;
         }
         else
         {
-            Debug.Log("down");
             sprite = downSprite;
         }
         return;
     }
 
-    protected override void UpdateLogic() { }
 
-    public void OverPentagram(bool enabled)
+    protected override void UpdateLogic()
     {
         if (Input.GetKeyDown(pickupKey))
         {
-            if (holdingChild == true) //Drop child
+            if (holdingChild) //Drop child
             {
-                if (overPentagram && holdingChild == true)
+                if (overPentagram)
                 {
                     pentagramObject.GetComponent<PentagramController>().KidDroppedFunction();
                     for (int i = 0; i < ChildrenWithinRange.Count; i++)
@@ -114,7 +108,7 @@ public class WitchController : EntityControllers
                     //overChild = false;
                     holdingChild = false;
                 }
-                else if (holdingChild == true)
+                else
                 {
                     heldChild.transform.parent = null;
                     heldChild.GetComponent<ChildController>().enabled = true;
@@ -124,6 +118,7 @@ public class WitchController : EntityControllers
             }
             else if(ChildrenWithinRange.Count > 0 && holdingChild == false) //Grab child
             {
+                heldChild = grabableChild;
                 float distance = 10000f;
                 for (int i = 0; i < ChildrenWithinRange.Count; i++)
                 {                    

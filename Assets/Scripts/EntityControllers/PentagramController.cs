@@ -3,17 +3,27 @@ using System.Collections;
 
 public class PentagramController : MonoBehaviour {
 
+    const int maxScore = 5;
     public int playerNumber;
     private int score = 0;
+    private SpriteRenderer winSprite;
+    private bool gameover = false;
 
     // Use this for initialization
     void Start () {
+        winSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        winSprite.enabled = false;
     }
 	
 	// Update is called once per frame
-	void Update () {
-	
-	}
+	void Update ()
+    {
+        if (Input.GetKeyDown(KeyCode.Return) && gameover)
+        {
+            Time.timeScale = 1;
+            Application.LoadLevel("MainMenu");
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -33,7 +43,13 @@ public class PentagramController : MonoBehaviour {
 
     public void KidDroppedFunction ()
     {
+        Debug.Log(score);
         ++score;
-        Debug.Log(score + " of team: " + playerNumber);
+        if (score >= maxScore)
+        {
+            Time.timeScale = 0;
+            winSprite.enabled = true;
+            gameover = true;
+        }
     }
 }
