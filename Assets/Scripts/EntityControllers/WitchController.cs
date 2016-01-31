@@ -26,10 +26,31 @@ public class WitchController : EntityControllers
 
     private GameObject pentagramObject;
 
+    private static readonly Vector3 upHitbox = new Vector3(0, 2, 0);
+    private static readonly Vector3 upRightHitbox = new Vector3(1.5f, 1.5f, 0);
+    private static readonly Vector3 rightHitbox = new Vector3(2, 0, 0);
+    private static readonly Vector3 downRightHitbox = new Vector3(1.5f, -1.5f, 0);
+    private static readonly Vector3 downHitbox = new Vector3(0, -2, 0);
+    private static readonly Vector3 downLeftHitbox = new Vector3(-1.5f, -1.5f, 0);
+    private static readonly Vector3 leftHitbox = new Vector3(-2, 0, 0);
+    private static readonly Vector3 upLeftHitbox = new Vector3(-1.5f, 1.5f, 0);
+
+    public bool isStunned = false;
+
+    private GameObject hitHitBox;
+
     public List<GameObject> ChildrenWithinRange = new List<GameObject>();
+
+    protected void Start()
+    {
+        base.Start();
+        hitHitBox = transform.FindChild("HitBox").gameObject;
+    }
 
     protected override Vector2 ComputeAdditionalForces()
     {
+        if (isStunned) return new Vector2(0, 0);
+
         var x = Input.GetKey(rightKey) ? 1 : 0;
         x -= Input.GetKey(leftKey) ? 1 : 0;
 
@@ -50,7 +71,6 @@ public class WitchController : EntityControllers
     // Angle is measured in rotations, clockwise from the positive-y axis.
     protected override void UpdateSprite(float angle)
     {
-        //bool mustFlip = false;
         if (angle > 0.5)
         {
             angle = 1 - angle;
@@ -63,25 +83,52 @@ public class WitchController : EntityControllers
 
         var rotPerSprite = 1f / 8;
 
+
         if (angle < (1f / 2) * rotPerSprite)
         {
             sprite = upSprite;
+            hitHitBox.transform.localPosition = upHitbox;
         }
         else if (angle < (3f / 2) * rotPerSprite)
         {
             sprite = upRightSprite;
+            if (mirrorAcrossY)
+            {
+                hitHitBox.transform.localPosition = upLeftHitbox;
+            }
+            else
+            {
+                hitHitBox.transform.localPosition = upRightHitbox;
+            }
         }
-        else if(angle < (5f / 2) * rotPerSprite)
+        else if (angle < (5f / 2) * rotPerSprite)
         {
             sprite = rightSprite;
+            if (mirrorAcrossY)
+            {
+                hitHitBox.transform.localPosition = leftHitbox;
+            }
+            else
+            {
+                hitHitBox.transform.localPosition = rightHitbox;
+            }
         }
-        else if(angle < (7f / 2) * rotPerSprite)
+        else if (angle < (7f / 2) * rotPerSprite)
         {
             sprite = downRightSprite;
+            if (mirrorAcrossY)
+            {
+                hitHitBox.transform.localPosition = downLeftHitbox;
+            }
+            else
+            {
+                hitHitBox.transform.localPosition = downRightHitbox;
+            }
         }
         else
         {
             sprite = downSprite;
+            hitHitBox.transform.localPosition = downHitbox;
         }
         return;
     }
