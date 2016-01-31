@@ -20,6 +20,10 @@ public class ScoreTracker : MonoBehaviour {
         
 	}
 
+    void OnMouseDown() {
+        UpdateScore(1, ++player1Score);
+    }
+
     void UpdateScore(int playerNumber, int newScore) {
         int currPlayer = 0;
         if (playerNumber == 1)
