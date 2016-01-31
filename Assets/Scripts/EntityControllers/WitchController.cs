@@ -48,12 +48,15 @@ public class WitchController : EntityControllers
         {
             if (holdingChild == true) //Drop child
             {
-                if (overPentagram)
+                if (overPentagram && holdingChild == true)
                 {
+                    print("Dropping Child");
                     pentagramObject.GetComponent<PentagramController>().KidDroppedFunction();
                     Destroy(heldChild);
+                    overChild = false;
+                    holdingChild = false;
                 }
-                else
+                else if (holdingChild == true)
                 {
                     print("Dropping Child");
                     heldChild.transform.parent = null;
@@ -64,7 +67,7 @@ public class WitchController : EntityControllers
             }
             else if(overChild == true && holdingChild == false) //Grab child
             {
-                print("Grabbing Child: " + grabableChild.name);
+                print("Grabbing Child");
                 heldChild = grabableChild;
                 heldChild.transform.parent = gameObject.transform;
                 heldChild.GetComponent<ChildController>().enabled = false;
