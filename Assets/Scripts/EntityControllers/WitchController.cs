@@ -101,7 +101,6 @@ public class WitchController : EntityControllers
             {
                 if (overPentagram && holdingChild == true)
                 {
-                    print("Dropping Child");
                     pentagramObject.GetComponent<PentagramController>().KidDroppedFunction();
                     for (int i = 0; i < ChildrenWithinRange.Count; i++)
                     {
@@ -117,7 +116,6 @@ public class WitchController : EntityControllers
                 }
                 else if (holdingChild == true)
                 {
-                    print("Dropping Child");
                     heldChild.transform.parent = null;
                     heldChild.GetComponent<ChildController>().enabled = true;
                     heldChild.GetComponent<Rigidbody2D>().isKinematic = false;
@@ -127,12 +125,8 @@ public class WitchController : EntityControllers
             else if(ChildrenWithinRange.Count > 0 && holdingChild == false) //Grab child
             {
                 float distance = 10000f;
-                print("Pickup Child");
                 for (int i = 0; i < ChildrenWithinRange.Count; i++)
-                {
-                    print("Count: "+ChildrenWithinRange.Count);
-                    print("i: "+i);
-                    
+                {                    
                     float newDistance = Vector3.Distance(gameObject.transform.position, ChildrenWithinRange[i].transform.position);
                     if(newDistance < distance)
                     {
@@ -162,7 +156,6 @@ public class WitchController : EntityControllers
         if (enabled)
         {
             ChildrenWithinRange.Add(child);
-            print("Adding");
         }
         else
         {
@@ -170,7 +163,6 @@ public class WitchController : EntityControllers
             {
                 if (child.gameObject == ChildrenWithinRange[i].gameObject)
                 {
-                    print("Removing");
                     ChildrenWithinRange.RemoveAt(i);
                     break;
                 }
