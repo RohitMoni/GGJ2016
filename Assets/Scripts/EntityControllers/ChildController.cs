@@ -18,7 +18,6 @@ public class ChildController : EntityControllers
 
     void Start()
     {
-        Debug.Log("START");
         waypointAnchor = GameObject.Find("WaypointAnchor").transform;
         GetNewWaypoint();
         base.Start();
@@ -56,8 +55,9 @@ public class ChildController : EntityControllers
         waypoint = waypointNode.transform.position;
     }
 
-    protected override void UpdateLogic()
+    protected override void UpdateSprite(float angle)
     {
-        
     }
+
+    protected override void UpdateLogic() {}
 }
