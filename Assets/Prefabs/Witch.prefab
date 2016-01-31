@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 158592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.2296185, y: 2.4880126, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -40,7 +40,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 158592}
   m_UseAutoMass: 0
   m_Mass: 0.02
-  m_LinearDrag: 11
+  m_LinearDrag: 35
   m_AngularDrag: 1
   m_GravityScale: 0
   m_IsKinematic: 0
@@ -56,7 +56,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 158592}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f6c3451fa37adf940b21e874747ebd6d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -73,16 +73,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05ffaccb5cb42048bad3445a7772633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strength: 4
   upKey: 119
   rightKey: 100
   downKey: 115
   leftKey: 97
   pickupKey: 101
-  upSprite: {fileID: 21300000, guid: 8514bde9cec712e4a80b6de041ef91b4, type: 3}
-  upRightSprite: {fileID: 21300000, guid: fd92c3c3903a7fe42a083d42ba108f09, type: 3}
-  rightSprite: {fileID: 21300000, guid: 3465739335b657740a725a5ac9619334, type: 3}
-  downRightSprite: {fileID: 21300000, guid: 8cc951ccc690e1f419fc1c600ff777de, type: 3}
-  downSprite: {fileID: 21300000, guid: 615e50aefa860634cb9fb8238533ecc9, type: 3}
+  upSprite: {fileID: 21300000, guid: 566e6ebc5716e6244bc777f04768e217, type: 3}
+  upRightSprite: {fileID: 21300000, guid: 605862d4e748f674593de0d66d0748dd, type: 3}
+  rightSprite: {fileID: 21300000, guid: 25e2e4a3456ef4242bfc8c2d0a48b0b6, type: 3}
+  downRightSprite: {fileID: 21300000, guid: 483a5d6f2a39c4a4c8934f4516e4cf49, type: 3}
+  downSprite: {fileID: 21300000, guid: 0ff39535842b08042a8918797fb864cf, type: 3}
+  ChildrenWithinRange: []
 --- !u!212 &21256894
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -108,8 +110,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 615e50aefa860634cb9fb8238533ecc9, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 21300000, guid: 483a5d6f2a39c4a4c8934f4516e4cf49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,32 +125,32 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: upSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8514bde9cec712e4a80b6de041ef91b4,
+      objectReference: {fileID: 21300000, guid: 566e6ebc5716e6244bc777f04768e217,
         type: 3}
     - target: {fileID: 0}
       propertyPath: upRightSprite
       value: 
-      objectReference: {fileID: 21300000, guid: fd92c3c3903a7fe42a083d42ba108f09,
+      objectReference: {fileID: 21300000, guid: 605862d4e748f674593de0d66d0748dd,
         type: 3}
     - target: {fileID: 0}
       propertyPath: rightSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3465739335b657740a725a5ac9619334,
+      objectReference: {fileID: 21300000, guid: 25e2e4a3456ef4242bfc8c2d0a48b0b6,
         type: 3}
     - target: {fileID: 0}
       propertyPath: downRightSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8cc951ccc690e1f419fc1c600ff777de,
+      objectReference: {fileID: 21300000, guid: 483a5d6f2a39c4a4c8934f4516e4cf49,
         type: 3}
     - target: {fileID: 0}
       propertyPath: downSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 615e50aefa860634cb9fb8238533ecc9,
+      objectReference: {fileID: 21300000, guid: 0ff39535842b08042a8918797fb864cf,
         type: 3}
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 208c9cbb9cb6c4645a42c6e403c77aa1,
+      objectReference: {fileID: 21300000, guid: 483a5d6f2a39c4a4c8934f4516e4cf49,
         type: 3}
     - target: {fileID: 0}
       propertyPath: m_FlipX
@@ -156,7 +158,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: upKey
@@ -177,6 +179,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: pickupKey
       value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: f6c3451fa37adf940b21e874747ebd6d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: strength
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LinearDrag
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
