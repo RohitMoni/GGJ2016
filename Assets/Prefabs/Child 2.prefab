@@ -69,7 +69,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 174320}
   m_UseAutoMass: 0
   m_Mass: 0.01
-  m_LinearDrag: 40
+  m_LinearDrag: 60
   m_AngularDrag: 1
   m_GravityScale: 0
   m_IsKinematic: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength: 2
-  animationFrequency: 4
+  animationFrequency: 12
   upRightSprites:
   - {fileID: 21300000, guid: de6c87deb289e3a4b965afb4d51b93a9, type: 3}
   - {fileID: 21300000, guid: 443f8f952b4fb0842bb74e1acc447d85, type: 3}
@@ -196,6 +196,14 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: ad5c957da1a9a704cb565c47a267ac78,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: animationFrequency
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LinearDrag
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174320}
