@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(SpriteRenderer))]
+using UnityEngine.UI;
+
+[RequireComponent(typeof(Image))]
 public class FilmGrainOverlay : MonoBehaviour {
 
-    SpriteRenderer spriteRender;
+    Image image;
     public float animationFrequency = 12f;
     public List<Sprite> filmGrainSprites;
 
     void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
-        spriteRender = GetComponent<SpriteRenderer>();
+        //DontDestroyOnLoad(transform.gameObject);
+        image = GetComponent<Image>();
     }
 
 	// Use this for initialization
@@ -29,7 +31,7 @@ public class FilmGrainOverlay : MonoBehaviour {
             var frame = (int)Random.Range(0, filmGrainSprites.Count - 1);
             int randomFrame = (int)(Random.value * (filmGrainSprites.Count - 1));
 
-            spriteRender.sprite = filmGrainSprites[frame];
+            image.sprite = filmGrainSprites[frame];
         }
 	}
 }
