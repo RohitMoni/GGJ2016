@@ -4,7 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public abstract class EntityControllers : MonoBehaviour
 {
-    Rigidbody2D rigidbody;
+    Rigidbody2D physicsBody;
     SpriteRenderer spriteRender;
 
     protected Vector2 position
@@ -36,7 +36,7 @@ public abstract class EntityControllers : MonoBehaviour
     // Use this for initialization
     protected void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        physicsBody = GetComponent<Rigidbody2D>();
         spriteRender = GetComponent<SpriteRenderer>();
     }
 	
@@ -44,7 +44,7 @@ public abstract class EntityControllers : MonoBehaviour
 	void Update ()
     {
         var force = ComputeAdditionalForces();
-        rigidbody.AddForce(force);
+        physicsBody.AddForce(force);
         if(force != new Vector2(0, 0))
         {
             var angle = GetAngle(force);

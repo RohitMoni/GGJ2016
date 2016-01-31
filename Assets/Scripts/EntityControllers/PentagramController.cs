@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PentagramController : MonoBehaviour {
 
-    const int maxScore = 2;
+    const int maxScore = 5;
     public int playerNumber;
     private int score = 0;
     private SpriteRenderer winSprite;
@@ -43,6 +43,7 @@ public class PentagramController : MonoBehaviour {
 
     public void KidDroppedFunction ()
     {
+        Debug.Log(score);
         ++score;
         if (score >= maxScore)
         {
