@@ -4,6 +4,9 @@ using System;
 
 public class ChildController : EntityControllers
 {
+
+    private Transform waypointNode;
+    private Transform waypointAnchor;
     
     public static float waypointRadius = 1;
     public static float xMin = 0;
@@ -15,7 +18,9 @@ public class ChildController : EntityControllers
 
     void Start()
     {
-        waypoint = GetNewWaypoint();
+        Debug.Log("START");
+        waypointAnchor = GameObject.Find("WaypointAnchor").transform;
+        GetNewWaypoint();
         base.Start();
     }
 
@@ -23,7 +28,7 @@ public class ChildController : EntityControllers
     {
         if ((waypoint - position).magnitude < waypointRadius)
         {
-            waypoint = GetNewWaypoint();
+            GetNewWaypoint();
         }
 
         var force = waypoint - position;
@@ -35,11 +40,20 @@ public class ChildController : EntityControllers
         return force;
     }
 
-    Vector2 GetNewWaypoint()
+    void GetNewWaypoint()
     {
-        var x = xMin + (xMax - xMin) * UnityEngine.Random.value;
-        var y = yMin + (yMax - yMin) * UnityEngine.Random.value;
-        return new Vector2(x, y);
+        if (waypointNode != null)
+        {
+            waypointNode =
+                waypointNode.gameObject.GetComponent<ChildWaypointNodeScript>().GetRandomConnectedNode().transform;
+        }
+        else
+        {
+            int randomNode = UnityEngine.Random.Range(0, waypointAnchor.childCount-1);
+            waypointNode = waypointAnchor.GetChild(randomNode).transform;
+        }
+
+        waypoint = waypointNode.transform.position;
     }
 
     protected override void UpdateLogic()
