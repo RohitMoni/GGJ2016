@@ -11,6 +11,8 @@ public class ChildController : EntityControllers
     public List<Sprite> upRightSprites;
     public List<Sprite> downRightSprites;
 
+    public Sprite capturedSprite;
+
     public static float waypointRadius = 1;
 
     Vector2 waypoint = new Vector2(0, 0);

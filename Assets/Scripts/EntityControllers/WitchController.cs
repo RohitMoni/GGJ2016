@@ -120,7 +120,9 @@ public class WitchController : EntityControllers
                 }
                 mass += heldChild.GetComponent<ChildController>().mass;
                 heldChild.transform.parent = gameObject.transform;
+                heldChild.GetComponent<SpriteRenderer>().sprite = heldChild.GetComponent<ChildController>().capturedSprite;
                 heldChild.GetComponent<ChildController>().enabled = false;
+
                 heldChild.GetComponent<Rigidbody2D>().isKinematic = true;
                 heldChild.transform.localPosition = new Vector3(0, -0.5f, 0);
                 holdingChild = true;
