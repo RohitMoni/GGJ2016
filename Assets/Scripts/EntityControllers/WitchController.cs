@@ -155,7 +155,7 @@ public class WitchController : EntityControllers
         }
     }
 
-    void OnCollisionEnter2D(Collider2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Player")
         {
