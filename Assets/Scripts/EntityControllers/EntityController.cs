@@ -7,6 +7,8 @@ public abstract class EntityControllers : MonoBehaviour
     Rigidbody2D physicsBody;
     SpriteRenderer spriteRender;
 
+    public float strength = 1;
+
     protected Vector2 position
     {
         get { return (Vector2)transform.position; }

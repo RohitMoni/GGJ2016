@@ -43,7 +43,8 @@ public class WitchController : EntityControllers
         {
             force = force.normalized;
         }
-        
+
+        force *= strength;
         return force;
     }
 

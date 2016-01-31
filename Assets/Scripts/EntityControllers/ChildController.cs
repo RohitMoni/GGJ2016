@@ -36,6 +36,7 @@ public class ChildController : EntityControllers
         {
             force = force.normalized;
         }
+        force *= strength;
         return force;
     }
 
