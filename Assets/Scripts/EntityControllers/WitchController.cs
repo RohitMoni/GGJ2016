@@ -17,6 +17,7 @@ public class WitchController : EntityControllers
     public Sprite downRightSprite;
     public Sprite downSprite;
 
+    public List<AudioClip> kidScreams;
     private bool overPentagram = false;
     private bool overChild = false;
 
@@ -107,6 +108,7 @@ public class WitchController : EntityControllers
                 }
             }
             else if(ChildrenWithinRange.Count > 0 && holdingChild == false) //Grab child
+    
             {
                 float distance = 10000f;
                 for (int i = 0; i < ChildrenWithinRange.Count; i++)
@@ -126,6 +128,12 @@ public class WitchController : EntityControllers
                 heldChild.GetComponent<Rigidbody2D>().isKinematic = true;
                 heldChild.transform.localPosition = new Vector3(0, -0.5f, 0);
                 holdingChild = true;
+
+                if (kidScreams.Count > 0)
+                {
+                    int randomIndex = UnityEngine.Random.Range(0, kidScreams.Count);
+                    AudioSource.PlayClipAtPoint(kidScreams[randomIndex], Camera.main.transform.position);
+                }
             }
         }
     }
