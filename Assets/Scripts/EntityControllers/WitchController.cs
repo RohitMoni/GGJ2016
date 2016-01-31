@@ -108,8 +108,12 @@ public class WitchController : EntityControllers
                 }
             }
             else if(ChildrenWithinRange.Count > 0 && holdingChild == false) //Grab child
-    
             {
+                if (overPentagram)
+                {
+                    pentagramObject.GetComponent<PentagramController>().KidPickedUpFunction(heldChild);
+                }
+
                 float distance = 10000f;
                 for (int i = 0; i < ChildrenWithinRange.Count; i++)
                 {                    
