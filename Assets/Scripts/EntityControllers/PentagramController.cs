@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class PentagramController : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class PentagramController : MonoBehaviour {
     private int score = 0;
     private SpriteRenderer winSprite;
     private bool gameover = false;
+    public Vector3 [] kidPositions;
 
     // Use this for initialization
     void Start () {
@@ -41,10 +43,18 @@ public class PentagramController : MonoBehaviour {
         }
     }
 
-    public void KidDroppedFunction ()
+    public void KidDroppedFunction (GameObject kidDropped)
     {
-        Debug.Log(score);
+        kidDropped.transform.parent = transform;
+        if (score < kidPositions.Count())
+        {
+            kidDropped.transform.position = Vector3.zero;
+            kidDropped.transform.localPosition = kidPositions[score];
+        }
+
         ++score;
+
+        Debug.Log(score);
         if (score >= maxScore)
         {
             Time.timeScale = 0;

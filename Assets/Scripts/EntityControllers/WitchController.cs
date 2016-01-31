@@ -21,12 +21,10 @@ public class WitchController : EntityControllers
     private bool overChild = false;
 
     private GameObject heldChild;
-    //private GameObject grabableChild;
     private bool holdingChild = false;
 
     private GameObject pentagramObject;
 
-    //List<BadGuy> badguys = new List<BadGuy>();
     public List<GameObject> ChildrenWithinRange = new List<GameObject>();
 
     protected override Vector2 ComputeAdditionalForces()
@@ -95,23 +93,9 @@ public class WitchController : EntityControllers
             if (holdingChild) //Drop child
             {
                 mass -= heldChild.GetComponent<ChildController>().mass;
-                //mass -=
-                //mass -= holdingChild
-                //Debug.Log(rigi)
-                //rigidbody.
                 if (overPentagram)
                 {
-                    pentagramObject.GetComponent<PentagramController>().KidDroppedFunction();
-                    for (int i = 0; i < ChildrenWithinRange.Count; i++)
-                    {
-                        if (heldChild.gameObject == ChildrenWithinRange[i].gameObject)
-                        {
-                            ChildrenWithinRange.RemoveAt(i);
-                            break;
-                        }
-                    }
-                    Destroy(heldChild);
-                    //overChild = false;
+                    pentagramObject.GetComponent<PentagramController>().KidDroppedFunction(heldChild);
                     holdingChild = false;
                 }
                 else
@@ -124,7 +108,6 @@ public class WitchController : EntityControllers
             }
             else if(ChildrenWithinRange.Count > 0 && holdingChild == false) //Grab child
             {
-                ///heldChild = grabableChild;
                 float distance = 10000f;
                 for (int i = 0; i < ChildrenWithinRange.Count; i++)
                 {                    
@@ -153,7 +136,6 @@ public class WitchController : EntityControllers
 
     public void OverChild(bool enabled, GameObject child)
     {
-        //overChild = enabled;
         if (enabled)
         {
             ChildrenWithinRange.Add(child);
