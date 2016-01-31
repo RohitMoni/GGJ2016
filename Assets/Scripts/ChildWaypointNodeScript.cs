@@ -1,22 +1,22 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 
 public class ChildWaypointNodeScript : MonoBehaviour
 {
 
-    public System.Collections.Generic.List<GameObject> connectedNodes;
+    public List<GameObject> connectedNodes = new List<GameObject>();
 
 	// Use this for initialization
 	void Start ()
 	{
 	    transform.GetChild(0).gameObject.SetActive(false);
 
-	    foreach (var node in connectedNodes)
-	    {
-	        node.GetComponent<ChildWaypointNodeScript>().AddToConnectedNodes(gameObject);
-	    }
-	}
+        foreach (var node in connectedNodes)
+        {
+            node.GetComponent<ChildWaypointNodeScript>().AddToConnectedNodes(gameObject);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {

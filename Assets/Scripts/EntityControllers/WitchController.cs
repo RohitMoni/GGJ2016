@@ -62,35 +62,29 @@ public class WitchController : EntityControllers
 
         if (angle < (1f / 2) * rotPerSprite)
         {
-            Debug.Log("up");
             sprite = upSprite;
         }
         else if (angle < (3f / 2) * rotPerSprite)
         {
-            Debug.Log("upright");
             sprite = upRightSprite;
         }
         else if(angle < (5f / 2) * rotPerSprite)
         {
-            Debug.Log("right");
             sprite = rightSprite;
         }
         else if(angle < (7f / 2) * rotPerSprite)
         {
-            Debug.Log("downright");
             sprite = downRightSprite;
         }
         else
         {
-            Debug.Log("down");
             sprite = downSprite;
         }
         return;
     }
 
-    protected override void UpdateLogic() { }
 
-    public void OverPentagram(bool enabled)
+    protected override void UpdateLogic()
     {
         if (Input.GetKeyDown(pickupKey))
         {
@@ -98,7 +92,6 @@ public class WitchController : EntityControllers
             {
                 if (overPentagram && holdingChild == true)
                 {
-                    print("Dropping Child");
                     pentagramObject.GetComponent<PentagramController>().KidDroppedFunction();
                     Destroy(heldChild);
                     overChild = false;
@@ -106,7 +99,6 @@ public class WitchController : EntityControllers
                 }
                 else if (holdingChild == true)
                 {
-                    print("Dropping Child");
                     heldChild.transform.parent = null;
                     heldChild.GetComponent<ChildController>().enabled = true;
                     heldChild.GetComponent<Rigidbody2D>().isKinematic = false;
@@ -115,7 +107,6 @@ public class WitchController : EntityControllers
             }
             else if(overChild == true && holdingChild == false) //Grab child
             {
-                print("Grabbing Child");
                 heldChild = grabableChild;
                 heldChild.transform.parent = gameObject.transform;
                 heldChild.GetComponent<ChildController>().enabled = false;
