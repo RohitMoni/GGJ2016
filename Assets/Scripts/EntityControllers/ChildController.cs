@@ -15,8 +15,8 @@ public class ChildController : EntityControllers
 
     void Start()
     {
-        waypoint = GetNewWaypoint();
         base.Start();
+        waypoint = GetNewWaypoint();
     }
 
     protected override Vector2 ComputeAdditionalForces()
@@ -42,8 +42,10 @@ public class ChildController : EntityControllers
         return new Vector2(x, y);
     }
 
-    protected override void UpdateLogic()
+    protected override void UpdateSprite(float angle)
     {
-        
+        throw new NotImplementedException();
     }
+
+    protected override void UpdateLogic() {}
 }
