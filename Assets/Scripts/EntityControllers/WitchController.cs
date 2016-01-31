@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WitchController : EntityControllers
@@ -25,6 +25,9 @@ public class WitchController : EntityControllers
     private bool holdingChild = false;
 
     private GameObject pentagramObject;
+
+    //List<BadGuy> badguys = new List<BadGuy>();
+    public List<GameObject> ChildrenWithinRange = new List<GameObject>();
 
     protected override Vector2 ComputeAdditionalForces()
     {
@@ -100,8 +103,16 @@ public class WitchController : EntityControllers
                 {
                     print("Dropping Child");
                     pentagramObject.GetComponent<PentagramController>().KidDroppedFunction();
+                    for (int i = 0; i < ChildrenWithinRange.Count; i++)
+                    {
+                        if (heldChild.gameObject == ChildrenWithinRange[i].gameObject)
+                        {
+                            ChildrenWithinRange.RemoveAt(i);
+                            break;
+                        }
+                    }
                     Destroy(heldChild);
-                    overChild = false;
+                    //overChild = false;
                     holdingChild = false;
                 }
                 else if (holdingChild == true)
@@ -113,10 +124,23 @@ public class WitchController : EntityControllers
                     holdingChild = false;
                 }
             }
-            else if(overChild == true && holdingChild == false) //Grab child
+            else if(ChildrenWithinRange.Count > 0 && holdingChild == false) //Grab child
             {
-                print("Grabbing Child");
-                heldChild = grabableChild;
+                float distance = 10000f;
+                print("Pickup Child");
+                for (int i = 0; i < ChildrenWithinRange.Count; i++)
+                {
+                    print("Count: "+ChildrenWithinRange.Count);
+                    print("i: "+i);
+                    
+                    float newDistance = Vector3.Distance(gameObject.transform.position, ChildrenWithinRange[i].transform.position);
+                    if(newDistance < distance)
+                    {
+                        distance = newDistance;
+                        heldChild = ChildrenWithinRange[i];
+                    }
+                }
+
                 heldChild.transform.parent = gameObject.transform;
                 heldChild.GetComponent<ChildController>().enabled = false;
                 heldChild.GetComponent<Rigidbody2D>().isKinematic = true;
@@ -134,7 +158,37 @@ public class WitchController : EntityControllers
 
     public void OverChild(bool enabled, GameObject child)
     {
-        overChild = enabled;
-        grabableChild = child;
+        //overChild = enabled;
+        if (enabled)
+        {
+            ChildrenWithinRange.Add(child);
+            print("Adding");
+        }
+        else
+        {
+            for (int i=0; i < ChildrenWithinRange.Count; i++)
+            {
+                if (child.gameObject == ChildrenWithinRange[i].gameObject)
+                {
+                    print("Removing");
+                    ChildrenWithinRange.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+}
+
+public struct ChildrenInRange
+{
+    public GameObject child;
+
+    public void ChildInRange(GameObject newChild)
+    {
+        child = newChild;
     }
 }
+   
+        
+   
