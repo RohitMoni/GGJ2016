@@ -21,7 +21,7 @@ public class WitchController : EntityControllers
     private bool overChild = false;
 
     private GameObject heldChild;
-    private GameObject grabableChild;
+    //private GameObject grabableChild;
     private bool holdingChild = false;
 
     private GameObject pentagramObject;
@@ -94,6 +94,11 @@ public class WitchController : EntityControllers
         {
             if (holdingChild) //Drop child
             {
+                mass -= heldChild.GetComponent<ChildController>().mass;
+                //mass -=
+                //mass -= holdingChild
+                //Debug.Log(rigi)
+                //rigidbody.
                 if (overPentagram)
                 {
                     pentagramObject.GetComponent<PentagramController>().KidDroppedFunction();
@@ -119,7 +124,7 @@ public class WitchController : EntityControllers
             }
             else if(ChildrenWithinRange.Count > 0 && holdingChild == false) //Grab child
             {
-                heldChild = grabableChild;
+                ///heldChild = grabableChild;
                 float distance = 10000f;
                 for (int i = 0; i < ChildrenWithinRange.Count; i++)
                 {                    
@@ -130,7 +135,7 @@ public class WitchController : EntityControllers
                         heldChild = ChildrenWithinRange[i];
                     }
                 }
-
+                mass += heldChild.GetComponent<ChildController>().mass;
                 heldChild.transform.parent = gameObject.transform;
                 heldChild.GetComponent<ChildController>().enabled = false;
                 heldChild.GetComponent<Rigidbody2D>().isKinematic = true;

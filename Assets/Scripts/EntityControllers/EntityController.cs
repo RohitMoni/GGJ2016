@@ -29,6 +29,12 @@ public abstract class EntityControllers : MonoBehaviour
         }
     }
 
+    public float mass
+    {
+        get { return physicsBody.mass; }
+        set { physicsBody.mass = value; }
+    }
+
     protected bool mirrorAcrossY
     {
         get { return spriteRender.flipX; }
