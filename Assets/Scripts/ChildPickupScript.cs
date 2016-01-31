@@ -5,7 +5,6 @@ public class ChildPickupScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
@@ -17,7 +16,7 @@ public class ChildPickupScript : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            col.gameObject.SendMessage("OverChild", true);
+            col.gameObject.GetComponent<WitchController>().OverChild(true, transform.parent.gameObject);
         }
     }
 
@@ -25,7 +24,7 @@ public class ChildPickupScript : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            col.gameObject.SendMessage("OverChild", false);
+            col.gameObject.GetComponent<WitchController>().OverChild(false, transform.parent.gameObject);
         }
     }
 }

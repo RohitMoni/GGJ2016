@@ -3,10 +3,12 @@ using System.Collections;
 
 public class PentagramController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+    public int playerNumber;
+    private int score = 0;
+
+    // Use this for initialization
+    void Start () {
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -17,7 +19,7 @@ public class PentagramController : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            col.gameObject.SendMessage("OverPentagram", true);
+            col.gameObject.GetComponent<WitchController>().OverPentagram(true, gameObject);
         }
     }
 
@@ -25,7 +27,13 @@ public class PentagramController : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            col.gameObject.SendMessage("OverPentagram", false);
+            col.gameObject.GetComponent<WitchController>().OverPentagram(false, gameObject);
         }
+    }
+
+    public void KidDroppedFunction ()
+    {
+        ++score;
+        Debug.Log(score + " of team: " + playerNumber);
     }
 }
