@@ -4,7 +4,7 @@ using System.Linq;
 
 public class PentagramController : MonoBehaviour {
 
-    const int maxScore = 5;
+    const int maxScore = 7;
     public int playerNumber;
     private int score = 0;
     private SpriteRenderer winSprite;

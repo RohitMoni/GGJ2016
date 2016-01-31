@@ -153,6 +153,21 @@ public class WitchController : EntityControllers
         }
     }
 
+    void OnCollisionEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            // We collided with another player, drop any held child now
+            if (holdingChild)
+            {
+                heldChild.transform.parent = null;
+                heldChild.GetComponent<ChildController>().enabled = true;
+                heldChild.GetComponent<Rigidbody2D>().isKinematic = false;
+                holdingChild = false;
+            }
+        }
+    }
+
 }
 
 public struct ChildrenInRange
